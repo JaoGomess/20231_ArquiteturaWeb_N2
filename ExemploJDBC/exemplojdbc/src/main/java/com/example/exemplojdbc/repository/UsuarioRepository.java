@@ -1,5 +1,7 @@
 package com.example.exemplojdbc.repository;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -18,5 +20,10 @@ public class UsuarioRepository {
                 usu.getNome(), usu.getEmail(), usu.getSenha()
         });
         return usu;
+    }
+
+    public List<Usuario> obterTodos() {
+        return jdbcTemplate.query(SELECT_ALL,
+                Usuario.getRowMapper());
     }
 }
