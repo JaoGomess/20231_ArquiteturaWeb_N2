@@ -21,14 +21,7 @@ public class CursoController {
     }
 
     @PostMapping
-    public ResponseEntity<?> inserir(@RequestBody CursoDTO cursoDTO) {
-        try {
-            return ResponseEntity.status(HttpStatus.CREATED)
-                    .body(cursoService.inserir(cursoDTO));
-        } catch (Exception ex) {
-            return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(ex.getMessage());
-        }
+    public Long inserir(@RequestBody CursoDTO cursoDTO) {
+        return cursoService.inserir(cursoDTO);
     }
 }

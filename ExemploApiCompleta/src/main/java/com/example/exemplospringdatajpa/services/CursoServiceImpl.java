@@ -3,6 +3,7 @@ package com.example.exemplospringdatajpa.services;
 import org.springframework.stereotype.Service;
 
 import com.example.exemplospringdatajpa.dtos.CursoDTO;
+import com.example.exemplospringdatajpa.exceptions.RegraNegocioException;
 import com.example.exemplospringdatajpa.models.CategoriaCurso;
 import com.example.exemplospringdatajpa.models.Curso;
 import com.example.exemplospringdatajpa.repositories.CategoriaCursoRepository;
@@ -20,7 +21,7 @@ public class CursoServiceImpl implements CursoService {
     public Long inserir(CursoDTO cursoDTO) {
         CategoriaCurso categ = categoriaCursoRepository
                 .findById(cursoDTO.getCategoriaCursoId())
-                .orElseThrow(() -> new RuntimeException("Categoria não encontrada"));
+                .orElseThrow(() -> new RegraNegocioException("Categoria não encontrada"));
 
         Curso c = new Curso();
         c.setNome(cursoDTO.getNome());
