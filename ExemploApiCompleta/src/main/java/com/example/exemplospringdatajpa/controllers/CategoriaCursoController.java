@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.exemplospringdatajpa.dtos.CategoriaCursoDTO;
 import com.example.exemplospringdatajpa.services.CategoriaCursoService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/categoriaCurso")
 public class CategoriaCursoController {
@@ -22,7 +24,7 @@ public class CategoriaCursoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Long inserir(@RequestBody CategoriaCursoDTO dto) {
+    public Long inserir(@Valid @RequestBody CategoriaCursoDTO dto) {
         return categoriaCursoService.inserir(dto);
     }
 }

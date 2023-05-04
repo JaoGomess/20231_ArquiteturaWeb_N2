@@ -18,6 +18,8 @@ import com.example.exemplospringdatajpa.dtos.CursoDTO;
 import com.example.exemplospringdatajpa.dtos.DadosCursoDTO;
 import com.example.exemplospringdatajpa.services.CursoService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/curso")
 public class CursoController {
@@ -44,12 +46,12 @@ public class CursoController {
 
     @PutMapping("{id}")
     public void editar(@PathVariable Long id,
-            @RequestBody CursoDTO dto) {
+            @Valid @RequestBody CursoDTO dto) {
         cursoService.editar(id, dto);
     }
 
     @PostMapping
-    public Long inserir(@RequestBody CursoDTO cursoDTO) {
+    public Long inserir(@Valid @RequestBody CursoDTO cursoDTO) {
         return cursoService.inserir(cursoDTO);
     }
 }
