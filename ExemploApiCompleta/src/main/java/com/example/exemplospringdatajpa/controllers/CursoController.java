@@ -18,9 +18,11 @@ import com.example.exemplospringdatajpa.dtos.CursoDTO;
 import com.example.exemplospringdatajpa.dtos.DadosCursoDTO;
 import com.example.exemplospringdatajpa.services.CursoService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 @RestController
+@SecurityRequirement(name = "Bearer Authentication")
 @RequestMapping("/api/curso")
 public class CursoController {
     private CursoService cursoService;

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.exemplospringdatajpa.dtos.CategoriaCursoDTO;
 import com.example.exemplospringdatajpa.services.CategoriaCursoService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 @RestController
@@ -23,6 +24,7 @@ public class CategoriaCursoController {
     }
 
     @PostMapping
+    @SecurityRequirement(name = "Bearer Authentication")
     @ResponseStatus(HttpStatus.CREATED)
     public Long inserir(@Valid @RequestBody CategoriaCursoDTO dto) {
         return categoriaCursoService.inserir(dto);
